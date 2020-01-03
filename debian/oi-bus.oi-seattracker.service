@@ -1,0 +1,10 @@
+[Unit]
+Description=OI seat tracking daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/oi-seattracker
+
+[Install]
+WantedBy=multi-user.target

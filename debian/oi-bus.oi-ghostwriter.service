@@ -1,0 +1,12 @@
+[Unit]
+Description=OI printing daemon
+After=network.target
+After=oi-seattracker.service
+Requires=oi-seattracker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/oi-ghostwriter
+
+[Install]
+WantedBy=multi-user.target
