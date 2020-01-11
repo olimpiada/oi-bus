@@ -9,7 +9,7 @@ import (
 )
 
 type Client struct {
-	BaseURL *url.Url
+	BaseURL *url.URL
 }
 
 const (
@@ -22,23 +22,34 @@ func NewLocalClient() Client {
 		panic(e)
 	}
 	return Client {
-		BaseURL: u
+		BaseURL: u,
 	}
 }
 
-type Uid int
-
-func mustUrl(u *url.URL, e error) *url.URL {
+func urlMustParse(rawurl string) *url.URL {
+	u, e := url.Parse(rawurl)
 	if e != nil {
 		panic(e)
 	}
 	return u
 }
 
-const whoIsItPath = mustUrl(url.Parse("/whoisit"))
+const (
+	WhoIsItPath = "/whoisit"
+	WhoAmIPath = "/whoami"
+	HealthcheckPath = "/healthcheck"
+)
 
-func (c Client) WhoIsIt(ip net.IP) (uid int) {
-	u := c.BaseURL.ResolveReference(whoIsItPath)
+type WhoResponse struct {
+	Cid *string `json:"computer_id"`
+	Ip *string `json:"ip_address"`
+	Uname *string `json:"user_name"`
+	Uid *int `json:"user_id"`
+}
+
+var whoIsItSuburl = urlMustParse(WhoIsItPath)
+func (c Client) WhoIsIt(ip net.IP) (who WhoResponse) {
+	u := c.BaseURL.ResolveReference(whoIsItSuburl)
 	params := make(url.Values)
 	params.Add("ipaddr", ip.String())
 	u.RawQuery = params.Encode()
@@ -51,7 +62,7 @@ func (c Client) WhoIsIt(ip net.IP) (uid int) {
 		fmt.Errorf("received unexpected response to /whoisit: %d", r.StatusCode)
 	}
 	dec := json.NewDecoder(r.Body)
-	if e = dec.Decode(&uid); e != nil {
+	if e = dec.Decode(&who); e != nil {
 		panic(e)
 	}
 	return

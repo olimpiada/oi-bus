@@ -12,12 +12,15 @@ import (
 
 var DbFile = flag.String("db", "/var/db/oi-seattracker/db.sqlite3", "sqlite db file")
 var PwFile = flag.String("pw", "/var/db/oi-seattracker/password.txt", "file into which password will be written on generation")
+var RegMode = flag.Bool("regmode", false, "registration mode (everyoneIsAdmin-style)")
+var Teapot = flag.String("teapot", "/usr/share/oi-bus/default-meme.jpg", "file to serve to participants trying to access admin interface")
 
-var db *sql.DB
+var db DB
 
 func main() {
 	flag.Parse()
-	backend, err := sql.Open("sqlite3", *dbfile)
+	MakeTea()
+	backend, err := sql.Open("sqlite3", *DbFile)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,7 +29,17 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	http.HandleFunc("/whoisit", WhoIsIt)
+
+	http.HandleFunc(seattracker.WhoIsItPath, WhoIsIt)
+	http.HandleFunc(seattracker.WhoAmIPath, WhoAmI)
+	http.HandleFunc(seattracker.HealthcheckPath, Healthcheck)
+	if *RegMode {
+		http.HandleFunc("/", RegistrationMode)
+	} else {
+
+	}
+
 	bind := fmt.Sprintf(":%d", seattracker.DEFAULT_PORT)
 	log.Fatal(http.ListenAndServe(bind, nil))
 }
+

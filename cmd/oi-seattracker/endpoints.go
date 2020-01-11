@@ -1,8 +1,12 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
+	"fmt"
+	"log"
 	"math/rand"
+	"net"
 	"net/http"
 )
 
@@ -17,43 +21,62 @@ func internalError(w http.ResponseWriter, err error) {
 	w.Header().Set("Content-Type", "text/plain")
 	w.WriteHeader(http.StatusInternalServerError)
 	fmt.Fprintln(w, "Internal server error has occured.")
-	fmt.Fprintln(w, InternalExcuses[rand.Intn(len(InternalExcuses)))
+	fmt.Fprintln(w, InternalExcuses[rand.Intn(len(InternalExcuses))])
 }
 
-func teapotError(w http.ResponseWriter) {
-	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-	w.WriteHeader(http.StatusTeapot)
-	fmt.Fprintln(w, "Odwiedził cię duch niełamania już więcej zasad organizacji zawodów. Nie wysyłaj tej wiadomości do 30 innych zawodników, a nie zostaniesz zdyskwalifikowany.")
-}
+var WhoIsIt = TeapotParticipants(func(w http.ResponseWriter, r *http.Request) {
+	ip := net.ParseIP(r.Header.Get("ipaddr"))
+	if ip == nil {
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		w.WriteStatus(http.StatusBadRequest)
+		fmt.Fprintln(w, "?ipaddr= missing or invalid")
+		return
+	}
+	HandleWho(w, ip)
+})
 
-func WhoIsIt(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	_, isParticipant, err := DetectParticipant(r)
-	enc := json.NewEncoder(w)
+func WhoAmI(w http.ResponseWriter, r *http.Request) {
+	ip, err := IpOfRequest(r)
 	if err != nil {
 		internalError(w, err)
 		return
-	} else if isParticipant {
-		teapotError(w)
-		return 
 	}
-
+	HandleWho(w, ip)
 }
 
-// TODO: is this useful
-func WhoAmI(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	uid, isParticipant, err := DetectParticipant(r)
-	enc := json.NewEncoder(w)
-	if err != nil {
-		log.Print(err)
-		w.WriteHeader(http.InternalServerError)
-		enc.Encode(nil)
-	} else if isParticipant {
-		w.WriteHeader(http.StatusOK)
-		enc.Encode(uid)
-	} else {
+func HandleWho(w http.ResponseWriter, ip net.IP) {
+	who, err := db.Who(ip)
+	if err == sql.ErrNoRows {
 		w.WriteHeader(http.StatusNotFound)
-		enc.Encode(nil)
+		return
+	}
+	if err != nil {
+		internalError(w, err)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	enc := json.NewEncoder(w)
+	err = enc.Encode(who)
+	if err != nil {
+		internalError(w, err)
+		return
 	}
 }
+
+func RegistrationMode(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet, http.MethodHead:
+		RegistrationModeGet(w, r)
+	case http.MethodPost:
+		RegistrationModePost(w, r)
+	default:
+		w.WriteHeader(http.StatusMethodNotAllowed)
+	}
+}
+
+func Healthcheck(w http.ResponseWriter, r *http.Request) {
+	
+}
+
+

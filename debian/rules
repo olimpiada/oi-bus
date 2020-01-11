@@ -28,3 +28,4 @@ export DH_GOLANG_BUILDPKG := sinol3.dasie.mimuw.edu.pl/oi-tech/oi-bus/cmd/...
 override_dh_installsystemd:
 	dh_installsystemd --name=oi-seattracker
 	dh_installsystemd --name=oi-ghostwriter
+	dh_installsystemd --name=oi-bus

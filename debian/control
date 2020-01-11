@@ -2,7 +2,7 @@ Source: oi-bus
 Section: admin
 Priority: optional
 Maintainer: Michał Sidor <michcioperz@asirpa.iscute.ovh>
-Build-Depends: debhelper (>= 11), golang-go | gccgo-go, dh-golang, golang-github-mattn-go-sqlite3-dev
+Build-Depends: debhelper (>= 11), golang-go | gccgo-go, dh-golang, golang-github-mattn-go-sqlite3-dev, libsqlite3-dev (>= 3.24.0)
 Standards-Version: 4.1.3
 Homepage: https://sinol3.dasie.mimuw.edu.pl/oi-tech/oi-bus
 Vcs-Git: https://sinol3.dasie.mimuw.edu.pl/oi-tech/oi-bus.git
@@ -10,6 +10,12 @@ Vcs-Browser: https://sinol3.dasie.mimuw.edu.pl/oi-tech/oi-bus
 
 Package: oi-bus
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libsqlite3-0 (>= 3.24.0)
 Description: kontrola logowania zawodników i drukowanie
+ no siema
+
+Package: oi-agent
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: autodiscovery rejestracji OI
  no siema

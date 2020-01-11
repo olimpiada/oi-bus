@@ -1,0 +1,10 @@
+[Unit]
+Description=OI healthcheck and autodiscovery agent
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/oi-agent
+
+[Install]
+WantedBy=multi-user.target
