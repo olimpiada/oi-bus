@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: oi-bus 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-12 00:35+0100\n"
+"PO-Revision-Date: 2020-01-12 00:36+0100\n"
+"Last-Translator: \n"
+"Language-Team: Michał Sidor <m.sidor@fri.edu.pl\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 2.2.1\n"
+
+#: models.py:36
+msgid "Load average"
+msgstr "Średnie obciążenie"
+
+#: models.py:37
+msgid "Processor count"
+msgstr "Liczba procesorów"
+
+#: models.py:38
+msgid "Home mountpoint free space"
+msgstr "Wolna przestrzeń na dysku katalogu domowego"
+
+#: models.py:39
+msgid "Host NTFS mountpoint free space"
+msgstr "Wolna przestrzeń na dysku NTFS hosta"
+
+#: models.py:40
+msgid "Free RAM memory"
+msgstr "Wolna pamięć RAM"
+
+#: templates/assign.html:3 templates/base.html:21
+msgid "Participant assignment"
+msgstr "Przypisanie zawodnika"
+
+#: templates/base.html:7 templates/base.html:14
+msgid "OI Tools"
+msgstr "Centralna Magistrala OIowa"
+
+#: templates/base.html:17
+msgid "Printing"
+msgstr "Wydruki"
+
+#: templates/base.html:18
+msgid "Backups"
+msgstr "Kopie zapasowe"
+
+#: templates/base.html:20 templates/register.html:3
+msgid "Computer registration"
+msgstr "Rejestracja komputera"
+
+#: templates/base.html:22
+msgid "Administration"
+msgstr "Administracja"
+
+#: templates/base.html:29
+msgid "P:"
+msgstr "U:"
+
+#: templates/base.html:29 templates/base.html:31
+msgid "C:"
+msgstr "K:"
+
+#: templates/base.html:31 templates/dashboard.html:9
+msgid "unassigned"
+msgstr "nieprzypisany"
+
+#: templates/base.html:34 templates/dashboard.html:12
+msgid "unregistered"
+msgstr "niezarejestrowany"
+
+#: templates/dashboard.html:5
+msgid "Computer ID"
+msgstr "ID komputera"
+
+#: templates/dashboard.html:7
+msgid "Participant ID"
+msgstr "ID uczestnika"
+
+#: templates/staff_form.html:7
+msgid "Save"
+msgstr "Zapisz"
