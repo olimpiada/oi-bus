@@ -18,9 +18,11 @@ DATABASES = {
     },
 }
 TEAPOT = '/usr/share/oi-bus/memes'
-STATIC_ROOT = '/var/run/oi-bus/static'
+STATIC_ROOT = '/run/oi-bus/static'
 MEDIA_ROOT = '/var/db/oi-bus/files'
-EVERYONE_IS_ADMIN = os.getenv('EVERYONE_IS_ADMIN', 'OVER_MY_DEAD_BODY') == 'AND_I_ACCEPT_THE_CONSEQUENCES'
+
+# to enable old-school self-registration, change to True
+EVERYONE_IS_ADMIN = False
 
 # when in trouble, you can uncomment this and set to True:
 #

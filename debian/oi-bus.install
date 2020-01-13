@@ -1,2 +1,2 @@
-oi_bus /usr/share/oi-bus
+prod_settings.py /etc/oi-bus
 memes/oi-broken.jpg /usr/share/oi-bus/memes

@@ -6,14 +6,12 @@ After=network.target
 User=www-data
 Group=www-data
 WorkingDirectory=/etc/oi-bus
-Environment=DJANGO_SETTINGS_MODULE=settings
+Environment=DJANGO_SETTINGS_MODULE=prod_settings
 Type=simple
-ExecStart=/usr/bin/uwsgi --socket-uwsgi=/var/run/oi-bus/socket --processes=4 --module=oi_bus.wsgi:application
-
-# if you want to enable old-school self-registration, you're in the right place
-# uncomment this line:
-#Environment=EVERYONE_IS_ADMIN=AND_I_ACCEPT_THE_CONSEQUENCES
-# just don't forget to comment it back
+ExecStartPre=+/usr/bin/install -m0755 -o www-data -g www-data -d /var/db/oi-bus /run/oi-bus
+ExecStartPre=/usr/bin/oi-bus-manage migrate --no-input
+ExecStartPre=/usr/bin/oi-bus-manage collectstatic --no-input
+ExecStart=/usr/bin/uwsgi --socket-uwsgi=/run/oi-bus/socket --processes=4 --module=oi_bus.wsgi:application
 
 [Install]
 WantedBy=multi-user.target

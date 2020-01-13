@@ -12,8 +12,3 @@ DATABASES = {
 TEAPOT = os.path.join(BASE_DIR, 'memes')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'dev_media')
 EVERYONE_IS_ADMIN = os.getenv('EVERYONE_IS_ADMIN', '') == 'TRUE'
-EVERYONE_IS_ADMIN = os.getenv('EVERYONE_IS_ADMIN', 'OVER_MY_DEAD_BODY') == 'AND_I_ACCEPT_THE_CONSEQUENCES'
-
-# when in trouble, you can uncomment this and set to True:
-#
-# DEBUG = False
