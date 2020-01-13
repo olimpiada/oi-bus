@@ -1,0 +1,19 @@
+[Unit]
+Description=OI participant management daemon
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/etc/oi-bus
+Environment=DJANGO_SETTINGS_MODULE=settings
+Type=simple
+ExecStart=/usr/bin/uwsgi --socket-uwsgi=/var/run/oi-bus/socket --processes=4 --module=oi_bus.wsgi:application
+
+# if you want to enable old-school self-registration, you're in the right place
+# uncomment this line:
+#Environment=EVERYONE_IS_ADMIN=AND_I_ACCEPT_THE_CONSEQUENCES
+# just don't forget to comment it back
+
+[Install]
+WantedBy=multi-user.target
