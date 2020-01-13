@@ -1,4 +1,4 @@
-from .base_settings import *
+from oi_bus.base_settings import *
 import os
 
 try:
