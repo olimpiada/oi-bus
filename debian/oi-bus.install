@@ -1,1 +1,2 @@
-default-meme.jpg /usr/share/oi-bus
+oi_bus /usr/share/oi-bus
+memes/oi-broken.jpg /usr/share/oi-bus/memes

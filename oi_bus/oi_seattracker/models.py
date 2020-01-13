@@ -45,7 +45,7 @@ class Healthcheck(models.Model):
     computer = models.ForeignKey(Computer, on_delete=models.CASCADE)
     parameter = models.TextField(choices=HEALTHCHECK_PARAMETERS)
     timestamp = models.DateTimeField(default=timezone.now)
-    value = models.BigIntegerField()
+    value = models.FloatField()
 
     class Meta:
         unique_together = (('computer', 'parameter'),)
