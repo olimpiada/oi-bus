@@ -13,5 +13,5 @@ X-Python3-Version: >= 3.7
 
 Package: oi-bus
 Architecture: all
-Depends: ${python3:Depends}, ${misc:Depends}, uwsgi-plugin-python3, nginx-full
+Depends: ${python3:Depends}, ${misc:Depends}, uwsgi-plugin-python3, nginx-full, a2ps
 Description: OI seat tracking and printing daemon

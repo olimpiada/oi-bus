@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Backups" %}{% endblock title %}
+{% block main %}
+{% block file_list %}
+<table>
+  <thead>
+    <tr>
+      <th>{% trans "File name" %}</th>
+      <th>{% trans "Upload time" %}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for file in files %}
+    <tr>
+      <td>{{ file.file.name }}</td>
+      <td>{{ file.timestamp }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock file_list %}
+{% if form %}
+<form enctype="multipart/form-data" method="POST" action="">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="{% trans "Save" %}" />
+</form>
+{% else %}
+<p>{% trans "It seems that you have reached the upload limit." %}</p>
+{% endif %}
+{% endblock main %}

@@ -1,6 +1,11 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 from .models import Computer, Participant, Healthcheck, Tag
 
+
+admin.site.site_header = _('OI Regional Server administration')
+admin.site.site_title = _('OI Regional Server')
+admin.site.index_title = _('Administration')
 
 @admin.register(Computer)
 class ComputerAdmin(admin.ModelAdmin):

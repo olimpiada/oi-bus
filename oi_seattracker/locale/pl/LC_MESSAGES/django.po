@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oi-bus 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 00:35+0100\n"
+"POT-Creation-Date: 2020-01-14 09:59+0100\n"
 "PO-Revision-Date: 2020-01-12 00:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: Michał Sidor <m.sidor@fri.edu.pl\n"
@@ -13,6 +13,22 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
 "|| n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 2.2.1\n"
+
+#: admin.py:6
+msgid "OI Regional Server administration"
+msgstr "Administracja serwera okręgowego OI"
+
+#: admin.py:7
+msgid "OI Regional Server"
+msgstr "Serwer Okręgowy OI"
+
+#: admin.py:8 templates/base.html:22
+msgid "Administration"
+msgstr "Administracja"
+
+#: apps.py:7
+msgid "Seat tracking"
+msgstr "Zarządzanie stanowiskami"
 
 #: models.py:36
 msgid "Load average"
@@ -53,10 +69,6 @@ msgstr "Kopie zapasowe"
 #: templates/base.html:20 templates/register.html:3
 msgid "Computer registration"
 msgstr "Rejestracja komputera"
-
-#: templates/base.html:22
-msgid "Administration"
-msgstr "Administracja"
 
 #: templates/base.html:29
 msgid "P:"

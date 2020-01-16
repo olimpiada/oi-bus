@@ -87,6 +87,7 @@ class AssignForm(forms.Form):
         else:
             super().__init__(initial=initial)
         self.fields['computer'].queryset = Computer.objects.filter(ip_address=computer.ip_address)
+        # self.fields['computer'].disabled = True
         self.fields['participant'].queryset = Participant.objects.filter(
             Q(computer=computer) | Q(computer__isnull=True))
 

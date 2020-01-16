@@ -8,8 +8,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'oi_seattracker',
-    'oi_ghostwriter',
+    'oi_seattracker.apps.OiSeattrackerConfig',
+    'oi_ghostwriter.apps.OiGhostwriterConfig',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -64,3 +64,5 @@ USE_L10N = True
 USE_TZ = True
 STATIC_URL = '/static/'
 DEBUG = False
+MAX_PARTICIPANT_FILES = 1000
+MAX_PRINT_PAGES = 12
