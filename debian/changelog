@@ -1,5 +1,6 @@
-oi-bus (0.1.0) UNRELEASED; urgency=medium
+oi-bus (0.1.1) unstable; urgency=medium
 
   * Initial Release.
+  * Printing is half done. Ansible inventory management command is still needed.
 
- -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Thu, 02 Jan 2020 14:30:50 +0100
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Fri, 17 Jan 2020 12:11:23 +0100

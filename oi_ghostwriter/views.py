@@ -1,4 +1,6 @@
-from django.http import HttpRequest, HttpResponseRedirect
+import mimetypes, os
+
+from django.http import HttpRequest, HttpResponseRedirect, HttpResponse
 from django.conf import settings
 from django import forms
 from django.db.models import Count

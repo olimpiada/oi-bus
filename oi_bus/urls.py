@@ -28,7 +28,8 @@ urlpatterns = [
     url(r'^ipauthsync/list$', seattracker.ipauthsync_list, name='ipauthsync_list'),
 
     url(r'^print$', ghostwriter.print, name='print'),
-    url(r'^backups', ghostwriter.backups, name='backups'),
+    url(r'^backups$', ghostwriter.backups, name='backups'),
+    url(r'^backups/(?P<ident>\d+)$', ghostwriter.download_backup, name='download_backup'),
 ]
 
 handler404 = 'oi_seattracker.views.teapot'

@@ -13,7 +13,7 @@
   <tbody>
   {% for file in files %}
     <tr>
-      <td>{{ file.file.name }}</td>
+      <td><a href="{% url "download_backup" file.id %}">{{ file.file.name }}</a></td>
       <td>{{ file.timestamp }}</td>
     </tr>
   {% endfor %}
