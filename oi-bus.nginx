@@ -2,6 +2,11 @@ server {
   server_name wydruki printouts backupy backups kopiezapasowe oireg oireg.fri.edu.pl;
 
   location / {
-    uwsgi_pass /run/oi-bus/socket;
+    uwsgi_pass unix:///run/oi-bus/socket;
+    include uwsgi_params;
+  }
+
+  location /static/ {
+    alias /var/lib/oi-bus/static/;
   }
 }

@@ -8,11 +8,11 @@ Group=www-data
 WorkingDirectory=/etc/oi-bus
 Environment=DJANGO_SETTINGS_MODULE=prod_settings
 Type=simple
-ExecStartPre=+/usr/bin/install -m0755 -o www-data -g www-data -d /var/db/oi-bus /run/oi-bus
+ExecStartPre=+/usr/bin/install -m0755 -o www-data -g www-data -d /var/lib/oi-bus /run/oi-bus
 ExecStartPre=/usr/bin/oi-bus-manage migrate --no-input
 ExecStartPre=/usr/bin/oi-bus-manage collectstatic --no-input
 # TODO: PID file
-ExecStart=/usr/bin/uwsgi --socket-uwsgi=/run/oi-bus/socket --processes=4 --module=oi_bus.wsgi:application
+ExecStart=/usr/bin/uwsgi_python3 --uwsgi-socket=/run/oi-bus/socket --processes=4 --module=oi_bus.wsgi:application
 
 [Install]
 WantedBy=multi-user.target

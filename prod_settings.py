@@ -7,9 +7,10 @@ try:
 except FileNotFoundError:
     print('generating a secret key')
     import base64
-    SECRET_KEY = base64.encodebytes(os.getrandom(32)).strip()
+    SECRET_KEY = base64.encodebytes(os.getrandom(32)).decode().strip()
     with open('/var/lib/oi-bus/secret-key', 'w') as f:
         f.write(SECRET_KEY)
+        f.flush()
 
 DATABASES = {
     'default': {

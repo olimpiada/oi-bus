@@ -1,4 +1,5 @@
 prod_settings.py /etc/oi-bus
 memes/oi-broken.jpg /usr/share/oi-bus/memes
+oi-bus-manage /usr/bin
 oi-bus.nginx /etc/nginx/sites-available
 oi-bus.nginx.l /etc/nginx/sites-enabled
