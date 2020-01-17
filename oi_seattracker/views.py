@@ -32,9 +32,9 @@ def healthcheck(request: HttpRequest) -> HttpResponse:
             Healthcheck.objects.update_or_create(
                 computer=computer,
                 parameter=param,
-                defaults=dict(timestamp=timezone.now(), value=int(request.POST[param])),
+                defaults=dict(timestamp=timezone.now(), value=float(request.POST[param])),
             )
-        except KeyError as e:
+        except (KeyError, ValueError) as e:
             pass
     return HttpResponse("")
 

@@ -1,3 +1,27 @@
+oi-bus (0.1.5) unstable; urgency=medium
+
+  * Fix Ansible inventory generation for non-null mac address
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Fri, 17 Jan 2020 21:11:56 +0100
+
+oi-bus (0.1.4) unstable; urgency=medium
+
+  * Dismiss invalid values for healthchecks.
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Fri, 17 Jan 2020 21:01:51 +0100
+
+oi-bus (0.1.3) unstable; urgency=medium
+
+  * Fix healthcheck typing.
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Fri, 17 Jan 2020 20:59:45 +0100
+
+oi-bus (0.1.2) unstable; urgency=medium
+
+  * Ansible management command.
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Fri, 17 Jan 2020 20:59:28 +0100
+
 oi-bus (0.1.1) unstable; urgency=medium
 
   * Initial Release.
