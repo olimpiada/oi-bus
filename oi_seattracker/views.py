@@ -123,6 +123,6 @@ def ipauthsync_list(request: HttpRequest) -> HttpResponse:
         dict(
             mappings=list(Participant.objects.select_related("computer").annotate(
                 user_id=F("id"), ip_address=F("computer__ip_address")
-            ).values('user_id', 'ip_address'))
+            ).filter(computer__isnull=False, ip_address__isnull=False).values('user_id', 'ip_address'))
         )
     )

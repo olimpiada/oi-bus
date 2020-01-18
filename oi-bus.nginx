@@ -6,6 +6,10 @@ server {
     include uwsgi_params;
   }
 
+  location /netboot/ {
+    alias /opt/netboot/;
+  }
+
   location /static/ {
     alias /var/lib/oi-bus/static/;
   }

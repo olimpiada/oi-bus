@@ -1,3 +1,12 @@
+oi-bus (0.1.6) unstable; urgency=medium
+
+  * Sakuga.
+  * Add our netboot to nginx config.
+  * Stop delivering null ip addresses to ipauthsyncd.
+  * Add import_participants command.
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Sat, 18 Jan 2020 10:50:56 +0100
+
 oi-bus (0.1.5) unstable; urgency=medium
 
   * Fix Ansible inventory generation for non-null mac address

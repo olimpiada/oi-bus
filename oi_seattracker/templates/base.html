@@ -8,35 +8,35 @@
     <link rel="stylesheet" href="{% static "style.css" %}"/>
 </head>
 <body>
+<nav class="navbar">
+<header>
+    <a href="{% url "dashboard" %}">{% trans "OI Tools" %}</a>
+</header>
+<ul class="inline">
+    <li><a href="{% url "print" %}">{% trans "Printing" %}</a></li>
+    <li><a href="{% url "backups" %}">{% trans "Backups" %}</a></li>
+    {% if user.is_super_user or EVERYONE_IS_ADMIN %}
+	<li><a href="{% url "register" %}">{% trans "Computer registration" %}</a></li>
+	<li><a href="{% url "assign" %}">{% trans "Participant assignment" %}</a></li>
+	<li><a href="{% url "admin:index" %}">{% trans "Administration" %}</a></li>
+    {% endif %}
+</ul>
+<footer>
+    <span class="whoami">
+    {% if computer %}
+	{% if computer.participant %}
+	    {% trans "P:" %} {{ computer.participant }} / {% trans "C:" %} {{ computer }}
+	{% else %}
+	    {% trans "unassigned" %} / {% trans "C:" %} {{ computer }}
+	{% endif %}
+    {% else %}
+	{% trans "unregistered" %}
+    {% endif %}
+    {% if user.is_super_user %}<span class="alert">admin</span>{% endif %}
+    </span>
+</footer>
+</nav>
 <div class="container" role="presentation">
-    <nav class="navbar">
-        <header>
-            <a href="{% url "dashboard" %}">{% trans "OI Tools" %}</a>
-        </header>
-        <ul class="inline">
-            <li><a href="{% url "print" %}">{% trans "Printing" %}</a></li>
-            <li><a href="{% url "backups" %}">{% trans "Backups" %}</a></li>
-            {% if user.is_super_user or EVERYONE_IS_ADMIN %}
-                <li><a href="{% url "register" %}">{% trans "Computer registration" %}</a></li>
-                <li><a href="{% url "assign" %}">{% trans "Participant assignment" %}</a></li>
-                <li><a href="{% url "admin:index" %}">{% trans "Administration" %}</a></li>
-            {% endif %}
-        </ul>
-        <footer>
-            <span class="whoami">
-            {% if computer %}
-                {% if computer.participant %}
-                    {% trans "P:" %} {{ computer.participant }} / {% trans "C:" %} {{ computer }}
-                {% else %}
-                    {% trans "unassigned" %} / {% trans "C:" %} {{ computer }}
-                {% endif %}
-            {% else %}
-                {% trans "unregistered" %}
-            {% endif %}
-            {% if user.is_super_user %}<span class="alert">admin</span>{% endif %}
-            </span>
-        </footer>
-    </nav>
     <main>
         {% block main %}{% endblock main %}
     </main>

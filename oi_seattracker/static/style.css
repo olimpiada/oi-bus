@@ -1,5 +1,46 @@
 .container {
     width: 90%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    padding: 1em;
+}
+
+ul.inline {
+    padding-left: 0;
+}
+
+ul.inline li {
+    display: inline;
+    list-style: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin: 0;
+    text-align: center;
+    background: darkslategray;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+nav * {
+    display: inline;
+    padding: 0.5em;
+    vertical-align: middle;
+}
+
+nav a:link, nav a:visited, nav a:active {
+    color: unset;
+}
+
+nav header {
+    font-weight: bold;
 }
