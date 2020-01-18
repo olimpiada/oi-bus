@@ -1,3 +1,9 @@
+oi-bus (0.1.7) unstable; urgency=medium
+
+  * Bodge printing.
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Sat, 18 Jan 2020 12:49:47 +0100
+
 oi-bus (0.1.6) unstable; urgency=medium
 
   * Sakuga.

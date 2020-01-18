@@ -2,6 +2,7 @@ import os
 import subprocess
 import tempfile
 
+from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -42,7 +43,6 @@ class PrintRequest(models.Model):
         filename = os.path.basename(backup.file.name)
         self.backup.file.seek(0)
         file_contents = backup.file.read().decode('utf-8').encode('iso8859-2')
-        output_file = tempfile.mktemp('.ps')
         tags = ', '.join(f'#{tag}' for tag in backup.owner.computer.tags.all())
         header = ' '.join([
             _imm('Participant:'),
@@ -51,8 +51,7 @@ class PrintRequest(models.Model):
             backup.owner.computer.nice_name,
             f'({tags})' if tags else '',
         ])
-        a2ps = subprocess.run(['a2ps', f'--stdin={filename}', '-E', '-X', 'iso2', '-o', output_file, f'--center-title={filename}', f'--header={header}'], input=file_contents, stderr=None)
-        print(output_file)
+        a2ps = subprocess.run(['a2ps', f'--stdin={filename}', '-E', '-X', 'iso2', '-C', f'--pages=1-{settings.MAX_PRINT_PAGES}', f'--center-title={filename}', f'--header={header}'], input=file_contents, check=True)
 
     def __str__(self):
         return str(self.backup)
