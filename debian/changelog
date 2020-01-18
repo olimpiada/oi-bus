@@ -1,3 +1,10 @@
+oi-bus (0.1.9) unstable; urgency=medium
+
+  * Add print_hosts command.
+  * Add print_dhcp_hosts command.
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Sat, 18 Jan 2020 13:51:44 +0100
+
 oi-bus (0.1.8) unstable; urgency=medium
 
   * Bodge Content-Disposition in backups. Actually still half-broken but idc.
