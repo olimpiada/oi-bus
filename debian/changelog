@@ -1,3 +1,9 @@
+oi-bus (0.1.8) unstable; urgency=medium
+
+  * Bodge Content-Disposition in backups. Actually still half-broken but idc.
+
+ -- Michał Sidor <michcioperz@oireg.region.fri.edu.pl>  Sat, 18 Jan 2020 13:15:22 +0100
+
 oi-bus (0.1.7) unstable; urgency=medium
 
   * Bodge printing.

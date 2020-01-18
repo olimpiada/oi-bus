@@ -1,6 +1,6 @@
 import mimetypes, os
 
-from django.http import HttpRequest, HttpResponseRedirect, HttpResponse
+from django.http import HttpRequest, HttpResponseRedirect, HttpResponse, FileResponse
 from django.conf import settings
 from django import forms
 from django.db.models import Count
@@ -62,5 +62,11 @@ def download_backup(request: HttpRequest, ident: str):
     ident: int = int(ident)
     backup = Backup.objects.get(owner=computer.participant, id=ident)
     backup.file.open()
-    return HttpResponse(backup.file, content_type=mimetypes.guess_type(os.path.basename(backup.file.name))[0] or 'application/octet-stream')
-
+    basename = os.path.basename(backup.file.name)
+    resp = FileResponse(backup.file, content_type=mimetypes.guess_type(basename)[0] or 'application/octet-stream')
+    try:
+        basename.encode('ascii')
+        resp['Content-Disposition'] = f'attachment; filename="{basename}"'
+    except UnicodeEncodeError:
+        resp['Content-Disposition'] = f"attachment; filename*=utf-8''{basename}"
+    return resp
