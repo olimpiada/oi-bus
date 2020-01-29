@@ -1,5 +1,5 @@
 server {
-  server_name wydruki printouts backupy backups kopiezapasowe oireg oireg.fri.edu.pl;
+  server_name wydruki printouts backupy backups kopiezapasowe oireg;
 
   location / {
     uwsgi_pass unix:///run/oi-bus/socket;
