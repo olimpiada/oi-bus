@@ -7,7 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         for host in Computer.objects.filter(ip_address__isnull=False, mac_address__isnull=False):
-            nice_name = ""
-            if host.nice_name:
-                nice_name = f',{host.nice_name}'
-            print(f'{str(host.mac_address)},{str(host.ip_address)}{nice_name}')
+            hostname = ""
+            if host.hostname:
+                hostname = f',{host.hostname}'
+            print(f'{str(host.mac_address)},{str(host.ip_address)}{hostname}')

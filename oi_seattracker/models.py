@@ -27,8 +27,14 @@ class Computer(models.Model):
             ip_address=self.ip_address)
 
     @property
+    def hostname(self) -> str:
+        if self.nice_name:
+            return 'c' + self.nice_name
+        return None
+
+    @property
     def ansible_name(self) -> str:
-        return self.nice_name or '{}.in-addr.arpa'.format('.'.join(self.ip_address.split('.')[::-1]))
+        return self.hostname or '{}.in-addr.arpa'.format('.'.join(self.ip_address.split('.')[::-1]))
 
     class Meta:
         verbose_name = _('computer')
