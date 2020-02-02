@@ -1,0 +1,2 @@
+#!/bin/sh
+exec oi-bus-manage oi_inventory

@@ -1,6 +1,7 @@
-oi-bus (0.1.11) UNRELEASED; urgency=medium
+oi-bus (0.1.11) unstable; urgency=medium
 
   * Autogenerate ansible host names from IP addresses
+  * Add oi command
 
  -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Sun, 02 Feb 2020 14:14:53 +0100
 
