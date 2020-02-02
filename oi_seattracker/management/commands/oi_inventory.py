@@ -11,8 +11,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         obj = dict(_meta=dict(hostvars=dict()), all=dict(hosts=[]))
         for host in Computer.objects.all():
-            obj['all']['hosts'].append(host.nice_name)
-            obj['_meta']['hostvars'][host.nice_name] = dict(ansible_host=host.ip_address, mac_address=str(host.mac_address) if host.mac_address else None)
+            obj['all']['hosts'].append(host.ansible_name)
+            obj['_meta']['hostvars'][host.ansible_name] = dict(ansible_host=host.ip_address, mac_address=str(host.mac_address) if host.mac_address else None)
         for tag in Tag.objects.all():
-            obj[tag.name] = dict(hosts=[host.nice_name for host in tag.computer_set.all()])
+            obj[tag.name] = dict(hosts=[host.ansible_name for host in tag.computer_set.all()])
         print(json.dumps(obj))

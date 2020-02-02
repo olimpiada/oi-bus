@@ -1,6 +1,11 @@
-oi-bus (0.1.9+nmu1) unstable; urgency=medium
+oi-bus (0.1.11) UNRELEASED; urgency=medium
 
-  * Non-maintainer upload.
+  * Autogenerate ansible host names from IP addresses
+
+ -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Sun, 02 Feb 2020 14:14:53 +0100
+
+oi-bus (0.1.10) unstable; urgency=medium
+
   * Remove oireg.fri.edu.pl from oi-bus.nginx because it exceeded bucket size
 
  -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Fri, 31 Jan 2020 10:25:08 +0100
