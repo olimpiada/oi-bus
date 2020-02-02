@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+  - name: pack all source code files
+    shell:
+        cmd: "tar -czf {{ tmpfile }} -T <(find /home/zawodnik '(' {{ filter }} ')' -a -type f)"
+        executable: /bin/bash
+  - name: fetch packed source code
+    fetch:
+        src: "{{ tmpfile }}"
+        dest: "{{ dstfile }}"
