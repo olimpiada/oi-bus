@@ -113,7 +113,7 @@ def dashboard(request: HttpRequest) -> HttpResponse:
 
 def teapot(request: HttpRequest) -> HttpResponse:
     the_chosen_one = random.choice(os.listdir(settings.TEAPOT))
-    with open(the_chosen_one, 'rb') as f:
+    with open(os.path.join(settings.TEAPOT, the_chosen_one), 'rb') as f:
         return HttpResponse(f, content_type=mimetypes.guess_type(the_chosen_one))
 
 

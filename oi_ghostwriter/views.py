@@ -1,4 +1,5 @@
 import mimetypes, os
+import typing
 
 from django.http import HttpRequest, HttpResponseRedirect, HttpResponse, FileResponse
 from django.conf import settings
@@ -10,12 +11,22 @@ from django.views.decorators.http import require_safe
 
 from oi_seattracker.processors import get_computer
 from oi_seattracker.models import Participant
+from oi_seattracker.views import teapot
 from .models import Backup, PrintRequest
 
 class UploadForm(forms.ModelForm):
     class Meta:
         model = Backup
         fields = ['owner', 'file']
+
+def require_participant(f: typing.Callable[..., HttpResponse]) -> typing.Callable[..., HttpResponse]:
+    def g(request: HttpRequest, *args, **kwargs) -> HttpResponse:
+        computer = get_computer(request)
+        if not computer or not hasattr(computer, 'participant'):
+            return teapot(request)
+        return f(request, *args, **kwargs)
+
+    return g
 
 
 def make_upload_form(request: HttpRequest, participant: Participant, print_ready: bool = False):
@@ -29,6 +40,7 @@ def make_upload_form(request: HttpRequest, participant: Participant, print_ready
     return form
 
 
+@require_participant
 def print(request: HttpRequest):
     computer = get_computer(request)
     user = computer.participant
@@ -43,6 +55,7 @@ def print(request: HttpRequest):
             return HttpResponseRedirect(reverse('backups'))
     return render(request, 'print.html', dict(form=form))
 
+@require_participant
 def backups(request: HttpRequest):
     computer = get_computer(request)
     user = computer.participant
