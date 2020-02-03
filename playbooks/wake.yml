@@ -1,0 +1,8 @@
+- hosts: "{{ hostspec }}"
+  gather_facts: false
+  tasks:
+  - name: "wake"
+    wakeonlan:
+        mac: "{{ mac_address }}"
+        broadcast: "{{ ansible_host |regex_replace('\\.[0-9]+$', '.255')}}"
+    delegate_to: localhost

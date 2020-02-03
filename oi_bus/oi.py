@@ -126,3 +126,18 @@ def update(updatedir):
     }
     ansible(['-m', 'synchronize', '-e', json.dumps(vars), '-a', f"archive=yes rsync_opts={{{{ropts}}}} checksum=yes src={updatedir!r} dest=/", 'all'])
 main.add_command(update)
+
+@click.command()
+@click.argument('hostspec', default='all')
+def shutdown(hostspec):
+    """Shutdown specified (by default all registered) workstations with Wake On Lan"""
+    ansible(['-a', 'poweroff', hostspec])
+main.add_command(shutdown)
+
+
+@click.command()
+@click.argument('hostspec', default='all')
+def wake(hostspec):
+    """Wake specified (by default all registered) workstations with Wake On Lan"""
+    ansible_playbook(['-e', f"hostspec={hostspec!r}", os.path.join(PLAYBOOKS, 'wake.yml')])
+main.add_command(wake)
