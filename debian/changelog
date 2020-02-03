@@ -1,4 +1,4 @@
-oi-bus (0.1.12) UNRELEASED; urgency=medium
+oi-bus (0.1.12) unstable; urgency=medium
 
   * Prepend 'c' to computer nice name when generating a hostname
   * Fix a few HTTP 500 errors
@@ -8,7 +8,7 @@ oi-bus (0.1.12) UNRELEASED; urgency=medium
   * Don't quote env vars in printed commands, so that they can be copied to shell
   * Add --ask/--no-ask and --dry-run options
 
- -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Sun, 02 Feb 2020 20:01:22 +0100
+ -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Mon, 03 Feb 2020 11:58:36 +0100
 
 oi-bus (0.1.11) unstable; urgency=medium
 
