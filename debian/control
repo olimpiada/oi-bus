@@ -2,7 +2,7 @@ Source: oi-bus
 Section: admin
 Priority: optional
 Maintainer: Michał Sidor <m.sidor@fri.edu.pl>
-Build-Depends: debhelper (>= 11), dh-python, python3-all, python3-setuptools, python3-django, python3-django-macaddress, python3-click, ansible
+Build-Depends: debhelper (>= 11), dh-python, python3-all, python3-setuptools, python3-django, python3-django-macaddress, python3-click
 Standards-Version: 4.1.3
 Homepage: https://sinol3.dasie.mimuw.edu.pl/oi-tech/oi-bus
 X-Python-Version: >= 3.7
@@ -13,5 +13,5 @@ X-Python3-Version: >= 3.7
 
 Package: oi-bus
 Architecture: all
-Depends: ${python3:Depends}, ${misc:Depends}, uwsgi-plugin-python3, nginx-full, a2ps
+Depends: ${python3:Depends}, ${misc:Depends}, uwsgi-plugin-python3, nginx-full, a2ps, ansible
 Description: OI seat tracking and printing daemon
