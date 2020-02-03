@@ -20,7 +20,7 @@ def ansible(ansible_args):
     """Execute arbitrary Ansible ad hoc command in oi-bus configuration"""
     cmd = ['ansible'] + list(ansible_args)
     os.environ.setdefault('ANSIBLE_CONFIG', ANSIBLE_CONFIG)
-    with_env = ' '.join(repr(x) for x in [f"ANSIBLE_CONFIG={ANSIBLE_CONFIG}"] + cmd)
+    with_env = ' '.join([f"ANSIBLE_CONFIG={ANSIBLE_CONFIG!r}"] + [repr(x) for x in cmd])
     if click.confirm(f'Do you want to run {with_env}?', default=True, err=True):
         os.execlp('ansible', *cmd)
 main.add_command(ansible)
@@ -33,7 +33,7 @@ def ansible_playbook(ansible_args):
     """Execute arbitrary Ansible playbook in oi-bus configuration"""
     cmd = ['ansible-playbook'] + list(ansible_args)
     os.environ.setdefault('ANSIBLE_CONFIG', ANSIBLE_CONFIG)
-    with_env = ' '.join(repr(x) for x in [f"ANSIBLE_CONFIG={ANSIBLE_CONFIG}"] + cmd)
+    with_env = ' '.join([f"ANSIBLE_CONFIG={ANSIBLE_CONFIG!r}"] + [repr(x) for x in cmd])
     if click.confirm(f'Do you want to run {with_env}?', default=True, err=True):
         os.execlp('ansible-playbook', *cmd)
 main.add_command(ansible_playbook)
