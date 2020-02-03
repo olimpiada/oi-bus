@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 import click
 import os
+import json
 from datetime import datetime
 
 ANSIBLE_CONFIG='/etc/ansible/ansible-oi.cfg'
 PLAYBOOKS='/usr/share/oi-bus/playbooks'
+BACKUPDIR='/var/lib/oi-bus/golden'
 
 @click.group()
 def main():
@@ -84,3 +86,43 @@ def backupzaw(dst):
     dst = os.path.join(os.getcwd(), dst)
     ansible_playbook(['-e', f"filter={ext_cond!r} tmpfile='{tmpfile}' dstfile='{dst}'", os.path.join(PLAYBOOKS, 'backupzaw.yml')])
 main.add_command(backupzaw)
+
+
+@click.command()
+@click.argument('hostname')
+@click.argument('dst', default=None)
+def backup(hostname, dst):
+    """Bakcup whole filesystem of specified workstation """
+    dst = os.path.join(dst or BACKUPDIR, hostname)
+    try:
+        os.mkdir(dst)
+    except FileExistsError:
+        pass
+    rsync_opts = ['--numeric-ids', '-x', '--exclude', "'/tmp/*'", '--exclude', "'/tmp/.*'", '--exclude', "'/var/tmp/*'", '--exclude', "'/var/tmp/.*'"]
+    if False:
+        vars = {
+            'ropts': rsync_opts,
+        }
+        ansible(['-m', 'synchronize', '-e', json.dumps(vars), '-a', f"archive=yes partial=yes delete=yes rsync_opts={{{{ropts}}}} mode=pull src=/ dest={dst!r}", hostname])
+    else:
+        ssh_opts="-t -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+        cmd = ['rsync', f"--rsh=/usr/bin/ssh {ssh_opts}", '-avP'] + rsync_opts + [f"root@{hostname}:/", dst]
+        pretty_cmd = ' '.join(repr(x) for x in cmd)
+        if click.confirm(f'Do you want to run {pretty_cmd}?', default=True, err=True):
+            os.execlp('rsync', *cmd)
+main.add_command(backup)
+
+@click.command()
+@click.argument('updatedir')
+def update(updatedir):
+    """[DEPRECATED] Upload update from directory UPDATEDIR to all workstations"""
+    rsync_opts = ['-x', '--numeric-ids']
+    try:
+        os.chmod(os.path.join(updatedir, 'root'), 0o700)
+    except FileNotFoundError:
+        pass
+    vars = {
+        'ropts': rsync_opts,
+    }
+    ansible(['-m', 'synchronize', '-e', json.dumps(vars), '-a', f"archive=yes rsync_opts={{{{ropts}}}} checksum=yes src={updatedir!r} dest=/", 'all'])
+main.add_command(update)

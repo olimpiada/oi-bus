@@ -3,6 +3,7 @@ oi-bus (0.1.12) UNRELEASED; urgency=medium
   * Prepend 'c' to computer nice name when generating a hostname
   * Fix a few HTTP 500 errors
   * Add oi {upload,download,backupzaw} subcommands
+  * Add oi {update,backup} subcommands
 
  -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Sun, 02 Feb 2020 20:01:22 +0100
 
