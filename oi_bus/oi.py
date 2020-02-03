@@ -141,3 +141,6 @@ def wake(hostspec):
     """Wake specified (by default all registered) workstations with Wake On Lan"""
     ansible_playbook(['-e', f"hostspec={hostspec!r}", os.path.join(PLAYBOOKS, 'wake.yml')])
 main.add_command(wake)
+
+if __name__ == '__main__':
+    main()
