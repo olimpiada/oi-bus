@@ -130,7 +130,7 @@ main.add_command(backupzaw)
 
 @click.command()
 @click.argument('hostname')
-@click.argument('dst', default=None)
+@click.argument('dst', required=False)
 def backup(hostname, dst):
     """Bakcup whole filesystem of specified workstation """
     dst = os.path.join(dst or BACKUPDIR, hostname)
@@ -138,7 +138,7 @@ def backup(hostname, dst):
         os.mkdir(dst)
     except FileExistsError:
         pass
-    rsync_opts = ['--numeric-ids', '-x', '--exclude', "'/tmp/*'", '--exclude', "'/tmp/.*'", '--exclude', "'/var/tmp/*'", '--exclude', "'/var/tmp/.*'"]
+    rsync_opts = ['--numeric-ids', '-x', '--exclude', '/tmp/*', '--exclude', '/tmp/.*', '--exclude', '/var/tmp/*', '--exclude', '/var/tmp/.*']
     if False:
         vars = {
             'ropts': rsync_opts,
