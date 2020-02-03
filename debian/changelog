@@ -1,3 +1,9 @@
+oi-bus (0.1.13) UNRELEASED; urgency=medium
+
+  * Chown /var/lib/oi-bus in postinst just to be sure
+
+ -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Mon, 03 Feb 2020 19:21:56 +0100
+
 oi-bus (0.1.12) unstable; urgency=medium
 
   * Prepend 'c' to computer nice name when generating a hostname
