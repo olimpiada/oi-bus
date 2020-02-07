@@ -1,6 +1,7 @@
 oi-bus (0.1.15) UNRELEASED; urgency=medium
 
   * Add delete_computers and delete_printouts
+  * Add --merge option to import_computers
 
  -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Fri, 07 Feb 2020 16:41:57 +0100
 

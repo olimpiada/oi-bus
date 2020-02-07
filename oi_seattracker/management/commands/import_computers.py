@@ -7,6 +7,7 @@ class Command(BaseCommand):
     help = 'Imports computers from a json file with array of [ip_address, nice_name, mac_address] where mac_address can be null or just not be'
 
     def add_arguments(self, parser):
+        parser.add_argument('--merge', action='store_true')
         parser.add_argument('source_file', type=open)
 
     def handle(self, *args, **options):
@@ -15,4 +16,11 @@ class Command(BaseCommand):
             ip = line[0]
             name = line[1]
             mac = line[2] if len(line) > 2 else None
-            Computer.objects.create(ip_address=ip, nice_name=name, mac_address=mac)
+            if (options['merge']):
+                (c, created) = Computer.objects.get_or_create(ip_address=ip)
+                c.nice_name=name
+                if mac:
+                    c.mac_address = mac
+                c.save()
+            else:
+                Computer.objects.create(ip_address=ip, nice_name=name, mac_address=mac)
