@@ -1,10 +1,10 @@
-oi-bus (0.1.15) UNRELEASED; urgency=medium
+oi-bus (0.1.15) unstable; urgency=medium
 
   * Add delete_computers and delete_printouts
   * Add --merge option to import_computers
   * Add move_participant
 
- -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Fri, 07 Feb 2020 16:41:57 +0100
+ -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Fri, 07 Feb 2020 18:07:31 +0100
 
 oi-bus (0.1.14) unstable; urgency=medium
 
