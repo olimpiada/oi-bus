@@ -1,8 +1,8 @@
-oi-bus (0.1.16) UNRELEASED; urgency=medium
+oi-bus (0.1.16) unstable; urgency=medium
 
   * Add logging config to prod_settings.py
 
- -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Sun, 09 Feb 2020 17:26:34 +0100
+ -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Sun, 09 Feb 2020 21:29:51 +0100
 
 oi-bus (0.1.15) unstable; urgency=medium
 
