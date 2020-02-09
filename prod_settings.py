@@ -31,3 +31,25 @@ EVERYONE_IS_ADMIN = False
 
 # running an international competition?
 # LANGUAGE_CODE = 'en'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+        'level': 'INFO',
+        'handlers': ['console'],
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'date_and_level',
+        },
+    },
+    'formatters': {
+            'date_and_level': {
+                'format': '[%(asctime)s %(levelname)s %(process)d:%(thread)d]'
+                          ' %(message)s',
+            },
+    },
+}
