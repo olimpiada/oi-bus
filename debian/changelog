@@ -1,3 +1,9 @@
+oi-bus (0.1.17) unstable; urgency=medium
+
+  * Fix tag printing.
+
+ -- Michał Sidor <michcioperz@lain.iscute.ovh>  Mon, 10 Feb 2020 13:58:33 +0100
+
 oi-bus (0.1.16) unstable; urgency=medium
 
   * Add logging config to prod_settings.py
