@@ -15,6 +15,7 @@ from django.http import HttpRequest, HttpResponse, JsonResponse, HttpResponseRed
 from django.shortcuts import render
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_safe
 
@@ -112,6 +113,8 @@ def dashboard(request: HttpRequest) -> HttpResponse:
 
 
 def teapot(request: HttpRequest) -> HttpResponse:
+    if not settings.TEAPOT:
+        return HttpResponse(_("This page is off-limits to participants. Or to non-participants, depending on which one you are."))
     the_chosen_one = random.choice(os.listdir(settings.TEAPOT))
     with open(os.path.join(settings.TEAPOT, the_chosen_one), 'rb') as f:
         return HttpResponse(f, content_type=mimetypes.guess_type(the_chosen_one))

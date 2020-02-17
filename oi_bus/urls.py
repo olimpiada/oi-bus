@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from oi_seattracker import views as seattracker
@@ -32,4 +33,5 @@ urlpatterns = [
     url(r'^backups/(?P<ident>\d+)$', ghostwriter.download_backup, name='download_backup'),
 ]
 
-handler404 = 'oi_seattracker.views.teapot'
+if settings.TEAPOT:
+    handler404 = 'oi_seattracker.views.teapot'

@@ -18,7 +18,7 @@ DATABASES = {
         'NAME': '/var/lib/oi-bus/db.sqlite3',
     },
 }
-TEAPOT = '/usr/share/oi-bus/memes'
+TEAPOT = False
 STATIC_ROOT = '/var/lib/oi-bus/static'
 MEDIA_ROOT = '/var/lib/oi-bus/files'
 
