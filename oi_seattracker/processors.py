@@ -27,8 +27,8 @@ def computer_processor(request: HttpRequest) -> dict:
     return dict(computer=get_computer(request))
 
 
-def everyone_is_processor(request: HttpRequest) -> dict:
-    return dict(EVERYONE_IS_ADMIN=settings.EVERYONE_IS_ADMIN)
+def some_settings_processor(request: HttpRequest) -> dict:
+    return dict(EVERYONE_IS_ADMIN=settings.EVERYONE_IS_ADMIN, PRINTOUTS_ENABLED=settings.PRINTOUTS_ENABLED)
 
 
 def get_computer(

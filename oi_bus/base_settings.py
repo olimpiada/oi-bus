@@ -33,7 +33,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'oi_seattracker.processors.computer_processor',
-                'oi_seattracker.processors.everyone_is_processor',
+                'oi_seattracker.processors.some_settings_processor',
             ],
         },
     },

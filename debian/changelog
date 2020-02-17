@@ -4,6 +4,7 @@ oi-bus (0.1.18) UNRELEASED; urgency=medium
   * Printouts support is no longer mandatory.
   * Update Polish translation
   * Move participant ID to the front of their format string.
+  * Remove printouts from navbar when disallowed
 
  -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Mon, 17 Feb 2020 20:16:24 +0100
 

@@ -13,24 +13,26 @@
     <a href="{% url "dashboard" %}">{% trans "OI Tools" %}</a>
 </header>
 <ul class="inline">
-    <li><a href="{% url "print" %}">{% trans "Printing" %}</a></li>
+    {% if PRINTOUTS_ENABLED %}
+        <li><a href="{% url "print" %}">{% trans "Printing" %}</a></li>
+    {% endif %}
     <li><a href="{% url "backups" %}">{% trans "Backups" %}</a></li>
     {% if user.is_super_user or EVERYONE_IS_ADMIN %}
-	<li><a href="{% url "register" %}">{% trans "Computer registration" %}</a></li>
-	<li><a href="{% url "assign" %}">{% trans "Participant assignment" %}</a></li>
-	<li><a href="{% url "admin:index" %}">{% trans "Administration" %}</a></li>
+        <li><a href="{% url "register" %}">{% trans "Computer registration" %}</a></li>
+        <li><a href="{% url "assign" %}">{% trans "Participant assignment" %}</a></li>
+        <li><a href="{% url "admin:index" %}">{% trans "Administration" %}</a></li>
     {% endif %}
 </ul>
 <footer>
     <span class="whoami">
     {% if computer %}
-	{% if computer.participant %}
-	    {% trans "P:" %} {{ computer.participant }} / {% trans "C:" %} {{ computer }}
-	{% else %}
-	    {% trans "unassigned" %} / {% trans "C:" %} {{ computer }}
-	{% endif %}
+        {% if computer.participant %}
+            {% trans "P:" %} {{ computer.participant }} / {% trans "C:" %} {{ computer }}
+        {% else %}
+            {% trans "unassigned" %} / {% trans "C:" %} {{ computer }}
+        {% endif %}
     {% else %}
-	{% trans "unregistered" %}
+        {% trans "unregistered" %}
     {% endif %}
     {% if user.is_super_user %}<span class="alert">admin</span>{% endif %}
     </span>
