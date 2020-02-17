@@ -47,7 +47,7 @@ class Participant(models.Model):
     computer = models.OneToOneField(Computer, null=True, blank=True, on_delete=models.SET_NULL, verbose_name=_('Assigned computer'))
 
     def __str__(self) -> str:
-        return f'{self.full_name} ({self.id})'
+        return f'{self.id}: {self.full_name}'
 
     class Meta:
         verbose_name = _('participant')
