@@ -7,6 +7,7 @@ oi-bus (0.2.0) UNRELEASED; urgency=medium
   * Remove printouts from navbar when disallowed
   * Add basic styling to forms.
   * Drastically increase dashboard font.
+  * Add basic unit tests
 
  -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Mon, 17 Feb 2020 20:16:24 +0100
 
