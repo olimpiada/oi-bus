@@ -1,0 +1,16 @@
+image: debian:buster
+
+before_script:
+  - apt-get update
+  - apt-get install --yes --no-install-recommends build-essential debhelper dh-python python3-all python3-setuptools python3-django python3-django-macaddress python3-click python3-pytest python3-pytest-django python3-pytest-cov
+
+build-me:
+  stage: build
+  script:
+    - dpkg-buildpackage -uc -us
+    - mkdir build
+    - mv ../*.deb build/
+    - DJANGO_SETTINGS_MODULE=oi_bus.dev_settings python3 -m pytest --cov=oi_seattracker --cov=oi_ghostwriter --cov-report=term --cov-report=xml:build/coverage.xml --cov-report=html:build/coverage.html oi_seattracker/tests.py oi_ghostwriter/tests.py
+  artifacts:
+    paths:
+      - build/*
