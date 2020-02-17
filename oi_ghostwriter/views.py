@@ -42,6 +42,8 @@ def make_upload_form(request: HttpRequest, participant: Participant, print_ready
 
 @require_participant
 def print(request: HttpRequest):
+    if not settings.PRINTOUTS_ENABLED:
+        return teapot(request)
     computer = get_computer(request)
     user = computer.participant
     form = None
