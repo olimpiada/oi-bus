@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oi-bus 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-14 09:59+0100\n"
-"PO-Revision-Date: 2020-01-12 00:36+0100\n"
+"POT-Creation-Date: 2020-02-17 21:53+0100\n"
+"PO-Revision-Date: 2020-02-17 21:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: Michał Sidor <m.sidor@fri.edu.pl\n"
 "Language: pl\n"
@@ -22,7 +22,7 @@ msgstr "Administracja serwera okręgowego OI"
 msgid "OI Regional Server"
 msgstr "Serwer Okręgowy OI"
 
-#: admin.py:8 templates/base.html:22
+#: admin.py:8 templates/base.html:21
 msgid "Administration"
 msgstr "Administracja"
 
@@ -30,59 +30,156 @@ msgstr "Administracja"
 msgid "Seat tracking"
 msgstr "Zarządzanie stanowiskami"
 
-#: models.py:36
+#: models.py:8
+msgid "Name"
+msgstr "Nazwa"
+
+#: models.py:14
+msgid "computer group"
+msgstr "grupa komputerów"
+
+#: models.py:15
+msgid "computer groups"
+msgstr "grupy komputerów"
+
+#: models.py:19
+msgid "IP address"
+msgstr "Adres IP"
+
+#: models.py:20
+msgid "MAC address"
+msgstr "Adres MAC"
+
+#: models.py:21
+msgid "Internal hostname"
+msgstr "Wewnętrzna nazwa hosta"
+
+#: models.py:21
+msgid ""
+"This will be used to generate SSH client configuration to make it easier to "
+"connect for troubleshooting."
+msgstr ""
+"Zostanie użyta do wygenerowania konfiguracji klienta SSH, aby móc łatwo "
+"łączyć się w celu rozwiązywania problemów."
+
+#: models.py:22
+msgid "Groups"
+msgstr "Grupy"
+
+#: models.py:22
+msgid ""
+"This will be used to generate Ansible host groups for easier managing. "
+"Groups are also printed on participant printouts. For locations with "
+"multiple participant rooms it is recommended to at least create a group for "
+"every room and assign it to the computers in that room to make printout "
+"delivery easier."
+msgstr ""
+"Zostaną użyte do wygenerowania grup hostów do Ansible dla łatwiejszego "
+"zarządzania. Grupy są również drukowane na wydrukach zawodników. Dla "
+"lokacji, w których zawodnicy są umieszczeni w różnych pomieszczeniach, "
+"zalecane jest utworzenie przynajmniej po grupie dla każdego pomieszczenia i "
+"przypisanie do niej właściwych komputerów w celu ułatwienia dostarczania "
+"wydruków."
+
+#: models.py:40
+msgid "computer"
+msgstr "komputer"
+
+#: models.py:41
+msgid "computers"
+msgstr "komputery"
+
+#: models.py:45 templates/dashboard.html:7
+msgid "Participant ID"
+msgstr "ID uczestnika"
+
+#: models.py:45
+msgid ""
+"This is an numeric ID assigned to the participant by the central "
+"administration of the competition. It is used to associate participant's "
+"onsite workstation with their SIO2 account."
+msgstr ""
+"Jest to numeryczne ID przypisane uczestnikowi przez centralną administrację "
+"zawodów. Jest używane to powiązania stacji zawodniczej uczestnika z jego "
+"kontem w SIO2."
+
+#: models.py:46
+msgid "Full name"
+msgstr "Imię i nazwisko"
+
+#: models.py:47
+msgid "Assigned computer"
+msgstr "Przypisany komputer"
+
+#: models.py:53
+msgid "participant"
+msgstr "uczestnik"
+
+#: models.py:54
+msgid "participants"
+msgstr "uczestnicy"
+
+#: models.py:58
 msgid "Load average"
 msgstr "Średnie obciążenie"
 
-#: models.py:37
+#: models.py:59
 msgid "Processor count"
 msgstr "Liczba procesorów"
 
-#: models.py:38
+#: models.py:60
 msgid "Home mountpoint free space"
 msgstr "Wolna przestrzeń na dysku katalogu domowego"
 
-#: models.py:39
+#: models.py:61
 msgid "Host NTFS mountpoint free space"
 msgstr "Wolna przestrzeń na dysku NTFS hosta"
 
-#: models.py:40
+#: models.py:62
 msgid "Free RAM memory"
 msgstr "Wolna pamięć RAM"
 
-#: templates/assign.html:3 templates/base.html:21
+#: models.py:74
+msgid "healthcheck"
+msgstr "sygnał kontrolny"
+
+#: models.py:75
+msgid "healthchecks"
+msgstr "sygnały kontrolne"
+
+#: templates/assign.html:3 templates/base.html:20
 msgid "Participant assignment"
 msgstr "Przypisanie zawodnika"
 
-#: templates/base.html:7 templates/base.html:14
+#: templates/base.html:7 templates/base.html:13
 msgid "OI Tools"
 msgstr "Centralna Magistrala OIowa"
 
-#: templates/base.html:17
+#: templates/base.html:16
 msgid "Printing"
 msgstr "Wydruki"
 
-#: templates/base.html:18
+#: templates/base.html:17
 msgid "Backups"
 msgstr "Kopie zapasowe"
 
-#: templates/base.html:20 templates/register.html:3
+#: templates/base.html:19 templates/register.html:3
 msgid "Computer registration"
 msgstr "Rejestracja komputera"
 
-#: templates/base.html:29
+#: templates/base.html:28
 msgid "P:"
 msgstr "U:"
 
-#: templates/base.html:29 templates/base.html:31
+#: templates/base.html:28 templates/base.html:30
 msgid "C:"
 msgstr "K:"
 
-#: templates/base.html:31 templates/dashboard.html:9
+#: templates/base.html:30 templates/dashboard.html:9
 msgid "unassigned"
 msgstr "nieprzypisany"
 
-#: templates/base.html:34 templates/dashboard.html:12
+#: templates/base.html:33 templates/dashboard.html:12
 msgid "unregistered"
 msgstr "niezarejestrowany"
 
@@ -90,10 +187,17 @@ msgstr "niezarejestrowany"
 msgid "Computer ID"
 msgstr "ID komputera"
 
-#: templates/dashboard.html:7
-msgid "Participant ID"
-msgstr "ID uczestnika"
-
 #: templates/staff_form.html:7
 msgid "Save"
 msgstr "Zapisz"
+
+#: views.py:117
+msgid ""
+"This page is off-limits to participants. Or to non-participants, depending "
+"on which one you are."
+msgstr ""
+"Uczestnik (lub nie-uczestnik, zależnie od tego, kim jesteś) nie powinien "
+"próbować wejść na tę podstronę."
+
+#~ msgid "This page is off-limits to participants."
+#~ msgstr "Uczestnik nie powinien próbować wejść na tę stronę."
