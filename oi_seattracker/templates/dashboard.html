@@ -2,9 +2,9 @@
 {% load i18n %}
 {% block main %}
     {% if computer %}
-        <h1><small class="muted">{% trans "Computer ID" %}:</small> {{ computer.nice_name | default:computer.ip_address }}</h1>
+        <h1><small class="muted">{% trans "Computer ID" %}:</small> <span class="supermassive">{{ computer.nice_name | default:computer.ip_address }}</span></h1>
         {% if computer.participant %}
-            <h1><small class="muted">{% trans "Participant ID" %}:</small> {{ computer.participant.id }}</h1>
+            <h1><small class="muted">{% trans "Participant ID" %}:</small> <span class="supermassive">{{ computer.participant.id }}</span></h1>
         {% else %}
             <h1>{% trans "unassigned" %}</h1>
         {% endif %}

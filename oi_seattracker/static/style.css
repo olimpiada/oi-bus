@@ -57,3 +57,7 @@ th.left, td.left {
 th.right, td.right {
     text-align: right;
 }
+
+.supermassive {
+    font-size: 2em;
+}
