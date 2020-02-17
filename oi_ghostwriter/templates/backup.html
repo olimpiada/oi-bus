@@ -6,15 +6,15 @@
 <table>
   <thead>
     <tr>
-      <th>{% trans "File name" %}</th>
-      <th>{% trans "Upload time" %}</th>
+      <th class="left">{% trans "File name" %}</th>
+      <th class="right">{% trans "Upload time" %}</th>
     </tr>
   </thead>
   <tbody>
   {% for file in files %}
     <tr>
-      <td><a href="{% url "download_backup" file.id %}">{{ file.file.name }}</a></td>
-      <td>{{ file.timestamp }}</td>
+      <td class="left"><a href="{% url "download_backup" file.id %}">{{ file.file.name }}</a></td>
+      <td class="right">{{ file.timestamp }}</td>
     </tr>
   {% endfor %}
   </tbody>
@@ -23,7 +23,9 @@
 {% if form %}
 <form enctype="multipart/form-data" method="POST" action="">
   {% csrf_token %}
-  {{ form }}
+  <table>
+  {{ form.as_table }}
+  </table>
   <input type="submit" value="{% trans "Save" %}" />
 </form>
 {% else %}

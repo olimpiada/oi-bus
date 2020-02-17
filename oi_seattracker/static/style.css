@@ -44,3 +44,16 @@ nav a:link, nav a:visited, nav a:active {
 nav header {
     font-weight: bold;
 }
+
+table {
+    width: 100%;
+    margin: 1em;
+}
+
+th.left, td.left {
+    text-align: left;
+}
+
+th.right, td.right {
+    text-align: right;
+}
