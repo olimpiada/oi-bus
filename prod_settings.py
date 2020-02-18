@@ -25,6 +25,9 @@ MEDIA_ROOT = '/var/lib/oi-bus/files'
 # to disable printing, uncomment and change to False
 # PRINTOUTS_ENABLED = True
 
+# to enable displaying of QR codes for registration helper app, uncomment and change to True
+# DISPLAY_QR_CODES = False
+
 # to enable old-school self-registration, change to True
 EVERYONE_IS_ADMIN = False
 

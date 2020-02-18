@@ -11,7 +11,8 @@ setuptools.setup(
     install_requires=[
         'Django>=1.11,<1.12',
         'django-macaddress',
-        'click>=7,<8'
+        'click>=7,<8',
+        'qrcode>=6,<7',
     ],
     entry_points='''
         [console_scripts]

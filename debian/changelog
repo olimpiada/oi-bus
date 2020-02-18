@@ -8,6 +8,7 @@ oi-bus (0.2.0) UNRELEASED; urgency=medium
   * Add basic styling to forms.
   * Drastically increase dashboard font.
   * Add basic unit tests
+  * Add registration by QR codes
 
  -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Mon, 17 Feb 2020 20:16:24 +0100
 

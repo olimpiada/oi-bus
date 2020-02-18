@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load qrreg %}
 {% block main %}
     {% if computer %}
         <h1><small class="muted">{% trans "Computer ID" %}:</small> <span class="supermassive">{{ computer.nice_name | default:computer.ip_address }}</span></h1>
@@ -11,4 +12,5 @@
     {% else %}
         <h1>{% trans "unregistered" %}</h1>
     {% endif %}
+    {% computer_qrcode request %}
 {% endblock main %}
