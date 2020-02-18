@@ -96,8 +96,8 @@ class AssignForm(forms.Form):
 @require_staff
 def assign(request: HttpRequest) -> HttpResponse:
     computer = get_computer(request)
-    if not computer.ip_address:
-        return render(request, "assign.html", dict(form=None))
+    if not computer:
+        return redirect('register')
     form = AssignForm(request, computer)
     if request.method == 'POST':
         if form.is_valid():

@@ -17,7 +17,7 @@
         <li><a href="{% url "print" %}">{% trans "Printing" %}</a></li>
     {% endif %}
     <li><a href="{% url "backups" %}">{% trans "Backups" %}</a></li>
-    {% if user.is_super_user or EVERYONE_IS_ADMIN %}
+    {% if user.is_staff or EVERYONE_IS_ADMIN %}
         <li><a href="{% url "register" %}">{% trans "Computer registration" %}</a></li>
         <li><a href="{% url "assign" %}">{% trans "Participant assignment" %}</a></li>
         <li><a href="{% url "admin:index" %}">{% trans "Administration" %}</a></li>
@@ -34,7 +34,7 @@
     {% else %}
         {% trans "unregistered" %}
     {% endif %}
-    {% if user.is_super_user %}<span class="alert">admin</span>{% endif %}
+    {% if user.is_staff %}<span class="alert">admin</span>{% endif %}
     </span>
 </footer>
 </nav>
