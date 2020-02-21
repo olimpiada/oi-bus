@@ -12,6 +12,7 @@ BACKUPDIR='/var/lib/oi-bus/golden'
 opt_ask = None
 opt_dry = False
 default_ask = None
+extra_env = {}
 
 def should_ask(is_dangerous):
     def deco(f):
@@ -58,8 +59,9 @@ def main(ask, dry_run : bool):
 @click.argument('ansible_args', nargs=-1, type=click.UNPROCESSED)
 def ansible(ansible_args):
     """Execute arbitrary Ansible ad hoc command in oi-bus configuration"""
+    global extra_env
     cmd = ['ansible'] + list(ansible_args)
-    env = {'ANSIBLE_CONFIG': ANSIBLE_CONFIG}
+    env = {'ANSIBLE_CONFIG': ANSIBLE_CONFIG, **extra_env}
     ask_exec(cmd, env)
 main.add_command(ansible)
 
@@ -78,7 +80,8 @@ main.add_command(ansible_playbook)
 @should_ask(False)
 def check():
     """Test connection to all registered workstations"""
-    ansible(['-m', 'ping', '--one-line', 'all'])
+    extra_env['ANSIBLE_STDOUT_CALLBACK'] = 'oneline_summarized'
+    ansible(['-m', 'ping', 'all'])
 main.add_command(check)
 
 @click.command()

@@ -5,4 +5,5 @@ oi-bus.nginx /etc/nginx/sites-available
 oi-bus.nginx.l /etc/nginx/sites-enabled
 oi-inventory /usr/bin
 ansible-oi.cfg /etc/ansible
+callback_plugins/*.py /usr/share/ansible/plugins/callback
 playbooks/*.yml /usr/share/oi-bus/playbooks
