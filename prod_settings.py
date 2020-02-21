@@ -31,6 +31,9 @@ MEDIA_ROOT = '/var/lib/oi-bus/files'
 # to enable old-school self-registration, change to True
 EVERYONE_IS_ADMIN = False
 
+# to enable OI workstations to autoregister through healthchecks, change to True
+AUTOREGISTER_ENABLED = False
+
 # when in trouble, you can uncomment this and set to True:
 #
 # DEBUG = False

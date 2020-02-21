@@ -26,17 +26,17 @@ from .processors import get_computer, get_mac_address
 @require_POST
 @csrf_exempt
 def healthcheck(request: HttpRequest) -> HttpResponse:
-    computer = get_computer(request, create=True)
-    print(request.POST)
-    for param, _ in HEALTHCHECK_PARAMETERS:
-        try:
-            Healthcheck.objects.update_or_create(
-                computer=computer,
-                parameter=param,
-                defaults=dict(timestamp=timezone.now(), value=float(request.POST[param])),
-            )
-        except (KeyError, ValueError) as e:
-            pass
+    computer = get_computer(request, create=settings.AUTOREGISTER_ENABLED)
+    if computer is not None:
+        for param, _ in HEALTHCHECK_PARAMETERS:
+            try:
+                Healthcheck.objects.update_or_create(
+                    computer=computer,
+                    parameter=param,
+                    defaults=dict(timestamp=timezone.now(), value=float(request.POST[param])),
+                )
+            except (KeyError, ValueError) as e:
+                pass
     return HttpResponse("")
 
 
