@@ -12,6 +12,7 @@ oi-bus (0.2.0) UNRELEASED; urgency=medium
   * Add summarized Ansible logs
   * Add participant IDs to Ansible inventory
   * Add option to disable autoregistration via healthcheck
+  * Add helpful hints about printing errors
 
  -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Mon, 17 Feb 2020 20:16:24 +0100
 

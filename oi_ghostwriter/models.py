@@ -42,7 +42,7 @@ class PrintRequest(models.Model):
         backup = self.backup
         filename = os.path.basename(backup.file.name)
         self.backup.file.seek(0)
-        file_contents = backup.file.read().decode('utf-8').encode('iso8859-2')
+        file_contents = backup.file.read().decode('utf-8').encode('iso8859-2', 'replace')
         tags = ', '.join(f'{tag}' for tag in backup.owner.computer.tags.all())
         header = ' '.join([
             _imm('Participant:'),

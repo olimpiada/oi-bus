@@ -3,10 +3,12 @@ import typing
 
 from django.http import HttpRequest, HttpResponseRedirect, HttpResponse, FileResponse
 from django.conf import settings
+from django.contrib import messages
 from django import forms
 from django.db.models import Count
 from django.shortcuts import render
 from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_safe
 
 from oi_seattracker.processors import get_computer
@@ -53,7 +55,12 @@ def print(request: HttpRequest):
     if request.method == 'POST':
         if form.is_valid():
             backup = form.save()
-            PrintRequest.objects.create(backup=backup).perform_printing_ritual()
+            try:
+                PrintRequest.objects.create(backup=backup).perform_printing_ritual()
+                messages.success(request, _("Your printing request was processed successfully. If you don't receive your printout soon, ask local helpers about it."))
+            except:
+                messages.error(request, _('An error occured while printing your file. Please make sure that your file is a UTF-8 encoded text file, and not, for example, an executable program. If you really need to get it printed, ask for technical help.'))
+                raise
             return HttpResponseRedirect(reverse('backups'))
     return render(request, 'print.html', dict(form=form))
 

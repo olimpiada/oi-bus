@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: oi-bus 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-17 21:53+0100\n"
+"POT-Creation-Date: 2020-02-21 23:45+0100\n"
 "PO-Revision-Date: 2020-02-17 21:53+0100\n"
 "Last-Translator: \n"
 "Language-Team: Michał Sidor <m.sidor@fri.edu.pl\n"
@@ -22,7 +22,7 @@ msgstr "Administracja serwera okręgowego OI"
 msgid "OI Regional Server"
 msgstr "Serwer Okręgowy OI"
 
-#: admin.py:8 templates/base.html:21
+#: admin.py:8 templates/base.html:23
 msgid "Administration"
 msgstr "Administracja"
 
@@ -89,7 +89,7 @@ msgstr "komputer"
 msgid "computers"
 msgstr "komputery"
 
-#: models.py:45 templates/dashboard.html:7
+#: models.py:45 templates/dashboard.html:8
 msgid "Participant ID"
 msgstr "ID uczestnika"
 
@@ -147,7 +147,7 @@ msgstr "sygnał kontrolny"
 msgid "healthchecks"
 msgstr "sygnały kontrolne"
 
-#: templates/assign.html:3 templates/base.html:20
+#: templates/assign.html:3 templates/base.html:22
 msgid "Participant assignment"
 msgstr "Przypisanie zawodnika"
 
@@ -155,39 +155,39 @@ msgstr "Przypisanie zawodnika"
 msgid "OI Tools"
 msgstr "Centralna Magistrala OIowa"
 
-#: templates/base.html:16
+#: templates/base.html:17
 msgid "Printing"
 msgstr "Wydruki"
 
-#: templates/base.html:17
+#: templates/base.html:19
 msgid "Backups"
 msgstr "Kopie zapasowe"
 
-#: templates/base.html:19 templates/register.html:3
+#: templates/base.html:21 templates/register.html:3
 msgid "Computer registration"
 msgstr "Rejestracja komputera"
 
-#: templates/base.html:28
+#: templates/base.html:30
 msgid "P:"
 msgstr "U:"
 
-#: templates/base.html:28 templates/base.html:30
+#: templates/base.html:30 templates/base.html:32
 msgid "C:"
 msgstr "K:"
 
-#: templates/base.html:30 templates/dashboard.html:9
+#: templates/base.html:32 templates/dashboard.html:10
 msgid "unassigned"
 msgstr "nieprzypisany"
 
-#: templates/base.html:33 templates/dashboard.html:12
+#: templates/base.html:35 templates/dashboard.html:13
 msgid "unregistered"
 msgstr "niezarejestrowany"
 
-#: templates/dashboard.html:5
+#: templates/dashboard.html:6
 msgid "Computer ID"
 msgstr "ID komputera"
 
-#: templates/staff_form.html:7
+#: templates/staff_form.html:9
 msgid "Save"
 msgstr "Zapisz"
 
