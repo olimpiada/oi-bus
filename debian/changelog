@@ -1,4 +1,10 @@
-oi-bus (0.2.0) UNRELEASED; urgency=medium
+oi-bus (0.2.1) UNRELEASED; urgency=medium
+
+  * Fix get_computer sometimes returning a tuple
+
+ -- Michał Sidor <michcioperz@lain.iscute.ovh>  Sat, 29 Feb 2020 09:46:00 +0100
+
+oi-bus (0.2.0) unstable; urgency=medium
 
   * Memes are no longer mandatory.
   * Printouts support is no longer mandatory.
@@ -14,7 +20,7 @@ oi-bus (0.2.0) UNRELEASED; urgency=medium
   * Add option to disable autoregistration via healthcheck
   * Add helpful hints about printing errors
 
- -- Michał Sidor <michcioperz@asirpa.iscute.ovh>  Mon, 17 Feb 2020 20:16:24 +0100
+ -- Michał Sidor <michcioperz@lain.iscute.ovh>  Sat, 29 Feb 2020 09:45:53 +0100
 
 oi-bus (0.1.17) unstable; urgency=medium
 

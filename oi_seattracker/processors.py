@@ -43,6 +43,6 @@ def get_computer(
             return Computer.objects.select_related('participant').get_or_create(
                 ip_address=ip_address,
                 defaults=dict(mac_address=get_mac_address(ip_address)),
-            )
+            )[0]
         else:
             return None
