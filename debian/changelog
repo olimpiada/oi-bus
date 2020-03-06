@@ -1,6 +1,7 @@
 oi-bus (0.2.1) UNRELEASED; urgency=medium
 
   * Fix get_computer sometimes returning a tuple
+  * Serve /opt/netboot/http instead of /opt/netboot via HTTP
 
  -- Michał Sidor <michcioperz@lain.iscute.ovh>  Sat, 29 Feb 2020 09:46:00 +0100
 

@@ -7,7 +7,7 @@ server {
   }
 
   location /netboot/ {
-    alias /opt/netboot/;
+    alias /opt/netboot/http/;
   }
 
   location /static/ {
