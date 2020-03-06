@@ -1,9 +1,10 @@
-oi-bus (0.2.1) UNRELEASED; urgency=medium
+oi-bus (0.2.1) unstable; urgency=medium
 
+  [ Michał Sidor ]
   * Fix get_computer sometimes returning a tuple
   * Serve /opt/netboot/http instead of /opt/netboot via HTTP
 
- -- Michał Sidor <michcioperz@lain.iscute.ovh>  Sat, 29 Feb 2020 09:46:00 +0100
+ -- Wojciech Dubiel <w.dubiel@fri.edu.pl>  Fri, 06 Mar 2020 16:53:36 +0100
 
 oi-bus (0.2.0) unstable; urgency=medium
 
