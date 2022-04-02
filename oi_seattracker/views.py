@@ -12,7 +12,7 @@ from django import forms
 from django.db.models import Q, F
 from django.forms import model_to_dict
 from django.http import HttpRequest, HttpResponse, JsonResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
