@@ -6,3 +6,4 @@ debian/oi-bus
 debian/*.substvars
 oi_bus.egg-info
 db.sqlite3
+out/
