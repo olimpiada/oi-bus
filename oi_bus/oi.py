@@ -58,7 +58,8 @@ def main(ask, dry_run : bool):
 ))
 @click.argument('ansible_args', nargs=-1, type=click.UNPROCESSED)
 def ansible(ansible_args):
-    """Execute arbitrary Ansible ad hoc command in oi-bus configuration"""
+    """Execute arbitrary Ansible ad hoc command.
+    oi-bus configuration is used."""
     global extra_env
     cmd = ['ansible'] + list(ansible_args)
     env = {'ANSIBLE_CONFIG': ANSIBLE_CONFIG, **extra_env}
@@ -70,7 +71,8 @@ main.add_command(ansible)
 ))
 @click.argument('ansible_args', nargs=-1, type=click.UNPROCESSED)
 def ansible_playbook(ansible_args):
-    """Execute arbitrary Ansible playbook in oi-bus configuration"""
+    """Execute arbitrary Ansible playbook.
+    oi-bus configuration is used."""
     cmd = ['ansible-playbook'] + list(ansible_args)
     env = {'ANSIBLE_CONFIG': ANSIBLE_CONFIG}
     ask_exec(cmd, env)
@@ -79,7 +81,7 @@ main.add_command(ansible_playbook)
 @click.command()
 @should_ask(False)
 def check():
-    """Test connection to all registered workstations"""
+    """Test connection to all registered workstations."""
     extra_env['ANSIBLE_STDOUT_CALLBACK'] = 'oneline_summarized'
     ansible(['-m', 'ping', 'all'])
 main.add_command(check)
@@ -87,14 +89,15 @@ main.add_command(check)
 @click.command()
 @click.argument('cmd')
 def execute(cmd: str):
-    """Execute a shell command on all registered workstations"""
+    """Execute a shell command on all registered workstations."""
     ansible(['-m', 'shell', '-a', cmd, 'all'])
 main.add_command(execute)
 
 @click.command()
 def reboot():
-    """Reboot all registered workstations, blocking until they all come back
-       If they don't within 10 minutes, raise an error.
+    """Reboot all registered workstations.
+    Blocks until they all come back. 
+    If they don't within 10 minutes, raise an error.
     """
     ansible(['-m', 'reboot', 'all'])
 main.add_command(reboot)
@@ -104,7 +107,8 @@ main.add_command(reboot)
 @click.argument('dst', default=".")
 @should_ask(False)
 def upload(src, dst):
-    """Upload local file SRC to all registered workstations as DST"""
+    """Upload local file SRC to all as DST.
+    By default all registered workstations are affected."""
     ansible(['-m', 'copy', '-a', f"src={src} dest={dst}", 'all'])
 main.add_command(upload)
 
@@ -113,7 +117,8 @@ main.add_command(upload)
 @click.argument('dst', default=".")
 @should_ask(False)
 def download(src, dst):
-    """Download file SRC from all registered workstations to a local directory DST"""
+    """Download file SRC from all to a local directory DST.
+    File is downloaded from all registered workstations."""
     ansible(['-m', 'fetch', '-a', f"src={src} dest={dst}", 'all'])
 main.add_command(download)
 
@@ -121,7 +126,8 @@ main.add_command(download)
 @click.argument('dst', default="backupzaw")
 @should_ask(False)
 def backupzaw(dst):
-    """Download source code files from zawodnik's home on all registered workstations to a local directory DST"""
+    """Download source code files from zawodnik's home.
+    Files are copied from registered workstations to a local directory DST."""
     extensions = ['cpp', 'h', 'c', 'cc', 'pas', 'java', 'py']
     ext_cond = ' -o '.join(f"-name '*.{ext}'" for ext in extensions)
     date = datetime.now()
@@ -135,7 +141,7 @@ main.add_command(backupzaw)
 @click.argument('hostname')
 @click.argument('dst', required=False)
 def backup(hostname, dst):
-    """Bakcup whole filesystem of specified workstation """
+    """Backup whole filesystem of specified workstation."""
     dst = os.path.join(dst or BACKUPDIR, hostname)
     try:
         os.mkdir(dst)
@@ -172,7 +178,9 @@ main.add_command(update)
 @click.command()
 @click.argument('hostspec', default='all')
 def shutdown(hostspec):
-    """Shutdown specified (by default all registered) workstations with Wake On Lan"""
+    """Shutdown specified workstations with Wake On Lan.
+    By default all registered are affected.
+    """
     ansible(['-a', 'poweroff', hostspec])
 main.add_command(shutdown)
 
@@ -181,7 +189,9 @@ main.add_command(shutdown)
 @click.argument('hostspec', default='all')
 @should_ask(False)
 def wake(hostspec):
-    """Wake specified (by default all registered) workstations with Wake On Lan"""
+    """Wake specified workstations with Wake On Lan.
+    By default all registered are affected.
+    """
     ansible_playbook(['-e', f"hostspec={hostspec!r}", os.path.join(PLAYBOOKS, 'wake.yml')])
 main.add_command(wake)
 
