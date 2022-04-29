@@ -1,4 +1,4 @@
-oi-bus (0.2.3) UNRELEASED; urgency=medium
+oi-bus (0.2.3) unstable; urgency=medium
 
   * Build in docker support
   * Fix not visible help text

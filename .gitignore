@@ -7,3 +7,5 @@ debian/*.substvars
 oi_bus.egg-info
 db.sqlite3
 out/
+oi_ghostwriter/locale/pl/LC_MESSAGES/django.mo
+oi_seattracker/locale/pl/LC_MESSAGES/django.mo
