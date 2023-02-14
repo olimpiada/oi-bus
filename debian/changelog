@@ -1,3 +1,9 @@
+oi-bus (0.2.3) unstable; urgency=low
+
+  * Fix bad support for non-ascii participant names on printouts
+
+ -- Paweł Dietrich <p.dietrich@oij.edu.pl>  Tue, 14 Feb 2023 23:00:03 +0100
+
 oi-bus (0.2.2) unstable; urgency=medium
 
   * Add missing import in oi_seattracker/views.py

@@ -112,7 +112,7 @@ def dashboard(request: HttpRequest) -> HttpResponse:
     return render(request, "dashboard.html")
 
 
-def teapot(request: HttpRequest) -> HttpResponse:
+def teapot(request: HttpRequest, exception: typing.Any) -> HttpResponse:
     if not settings.TEAPOT:
         return HttpResponse(_("This page is off-limits to participants. Or to non-participants, depending on which one you are."))
     the_chosen_one = random.choice(os.listdir(settings.TEAPOT))

@@ -1,7 +1,7 @@
 Source: oi-bus
 Section: admin
 Priority: optional
-Maintainer: Michał Sidor <m.sidor@fri.edu.pl>
+Maintainer: Paweł Dietrich <p.dietrich@fri.edu.pl>
 Build-Depends: debhelper (>= 11), dh-python, python3-all, python3-setuptools, python3-django, python3-django-macaddress, python3-click, python3-qrcode
 Standards-Version: 4.1.3
 Homepage: https://sinol3.dasie.mimuw.edu.pl/oi-tech/oi-bus
