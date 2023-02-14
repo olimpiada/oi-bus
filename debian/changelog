@@ -1,3 +1,10 @@
+oi-bus (0.2.3) unstable; urgency=medium
+
+  * Build in docker support
+  * Fix not visible help text
+
+ -- Bartłomiej Chmiel <bartlomiej.chmiel@oij.edu.pl>  Wed, 27 Apr 2022 23:05:22 +0000
+
 oi-bus (0.2.2) unstable; urgency=medium
 
   * Add missing import in oi_seattracker/views.py
