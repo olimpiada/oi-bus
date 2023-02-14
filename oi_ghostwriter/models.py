@@ -42,7 +42,7 @@ class PrintRequest(models.Model):
         backup = self.backup
         filename = os.path.basename(backup.file.name)
         self.backup.file.seek(0)
-        file_contents = backup.file.read().decode('utf-8').encode('iso8859-2', 'replace')
+        file_contents = backup.file.read().decode('utf8').encode('latin2', 'replace')
         tags = ', '.join(f'{tag}' for tag in backup.owner.computer.tags.all())
         header = ' '.join([
             _imm('Participant:'),
@@ -51,7 +51,12 @@ class PrintRequest(models.Model):
             backup.owner.computer.nice_name,
             f'({tags})' if tags else '',
         ])
-        a2ps = subprocess.run(['a2ps', f'--stdin={filename}', '-E', '-X', 'iso2', '-C', f'--pages=1-{settings.MAX_PRINT_PAGES}', f'--center-title={filename}', f'--header={header}'], input=file_contents, check=True)
+        a2ps = subprocess.run([
+            b'a2ps', b'-CE', b'-Xiso2', f'--stdin={filename}'.encode('latin2', 'replace'),
+            f'--pages=1-{settings.MAX_PRINT_PAGES}'.encode('latin2', 'replace'),
+            f'--center-title={filename}'.encode('latin2', 'replace'),
+            f'--header={header}'.encode('latin2', 'replace'),
+        ], input=file_contents, check=True)
 
     def __str__(self):
         return str(self.backup)
