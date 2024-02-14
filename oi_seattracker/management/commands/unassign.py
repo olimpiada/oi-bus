@@ -1,9 +1,8 @@
 ﻿from django.core.management.base import BaseCommand
 from oi_seattracker.models import Participant
-import json
 
 class Command(BaseCommand):
-    help = 'Remove assigned to participant computer'
+    help = 'Unassign the participant from the computer'
     
     def add_arguments(self, parser):
         parser.add_argument('participant_id', type=int)
